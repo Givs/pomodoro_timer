@@ -2,7 +2,7 @@
     Timer Control
 </h1>
 
-# 📖Sobre
+# 📖About
 **Timer Control** is a simple project to training DOM manipulation. You can set minutes and seconds, pause and 
 stop the stopwatch and listening a calm music.
 
