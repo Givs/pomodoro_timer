@@ -61,7 +61,6 @@ soundOn_btn.addEventListener('click', () => {
 })
 
 soundOff_btn.addEventListener('click', () => {
-    body.style.backgroundColor = "#2a2aaa";
     controls.hideAndShow(soundOff_btn, soundOn_btn)
     sounds.bgAudio.pause()
 })

@@ -17,7 +17,6 @@ export default function Timer({
             let seconds = Number(secondsDisplay.textContent)
             let minutes = Number(minutesDisplay.textContent)
 
-            Sounds().bgAudio.play()
     
             if (seconds <= 0){
                 seconds = 60
@@ -28,7 +27,6 @@ export default function Timer({
             secondsDisplay.textContent = secondsDisplay.textContent <= 10 ? String(seconds - 1).padStart(2, '0') : seconds - 1
             
             if (minutesDisplay.textContent <= 0 && secondsDisplay.textContent <= 0){
-                Sounds().bgAudio.pause()
                 hideAndShow(stop_btn, set_btn, pause_btn, play_btn)
                 updateTimer(initialMinutes, initialSeconds)
                 Sounds().finalButton()
