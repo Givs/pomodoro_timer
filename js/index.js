@@ -1,21 +1,23 @@
 import Controls from "./controls.js"
 import Timer from "./timer.js"
-
-const play_btn = document.querySelector('.play')
-const pause_btn = document.querySelector('.pause')
-const stop_btn = document.querySelector('.stop')
-const set_btn = document.querySelector('.set')
-const soundOn_btn = document.querySelector('.sound-on')
-const soundOff_btn = document.querySelector('.sound-off')
-const minutesDisplay = document.querySelector('.minutes')
-const secondsDisplay = document.querySelector('.seconds')
-const body = document.querySelector('body');
-
+import Sounds from "./sounds.js"
+import {
+    play_btn,
+    pause_btn,
+    stop_btn,
+    set_btn,
+    soundOn_btn,
+    soundOff_btn,
+    minutesDisplay,
+    secondsDisplay,
+    body
+} from "./elements.js"
 
 
 
 let initialMinutes, initialSeconds
 
+const sounds = Sounds()
 const controls = Controls()
 
 const timer = Timer({
@@ -32,8 +34,9 @@ const timer = Timer({
 
 
 play_btn.addEventListener('click', () => {
-    body.style.backgroundColor = "#355a37"
     if(minutesDisplay.textContent != '00' || secondsDisplay.textContent != '00'){
+        body.style.backgroundColor = "#355a37"
+        sounds.pressButton()
         controls.hideAndShow(play_btn, pause_btn, set_btn, stop_btn)
         timer.countDown(initialMinutes, initialSeconds)
     } 
@@ -41,10 +44,12 @@ play_btn.addEventListener('click', () => {
 
 pause_btn.addEventListener('click', () => {
     controls.hideAndShow(pause_btn, play_btn)
+    sounds.pressButton()
     timer.hold()
 })
 
 stop_btn.addEventListener('click', () => {
+    sounds.pressButton()
     controls.hideAndShow(stop_btn, set_btn, pause_btn, play_btn)
     timer.updateTimer(initialMinutes,initialSeconds)
     timer.hold()
@@ -52,10 +57,13 @@ stop_btn.addEventListener('click', () => {
 
 soundOn_btn.addEventListener('click', () => {
     controls.hideAndShow(soundOn_btn, soundOff_btn)
+    sounds.bgAudio.play()
 })
 
 soundOff_btn.addEventListener('click', () => {
+    body.style.backgroundColor = "#2a2aaa";
     controls.hideAndShow(soundOff_btn, soundOn_btn)
+    sounds.bgAudio.pause()
 })
 
 set_btn.addEventListener('click', () => {
