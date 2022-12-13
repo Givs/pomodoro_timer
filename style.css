@@ -5,7 +5,7 @@
 }
 
 :root {
-    --bg-color: #121214;
+    --bg-color: #2a2aaa;
     --base-color: 194;
     --bg-primary-light: hsla(var(--base-color), 100%, 63%, 0.13);
     --primary-color: hsl(var(--base-color), 100%, 63%);
